@@ -242,7 +242,7 @@ h3 {
   justify-content: center;
   gap: 0.5625rem;
   padding: 0.8125rem 1.125rem;
-  border: 1px solid transparent;
+  border: 0.0625rem solid transparent;
   border-radius: var(--radius);
   cursor: pointer;
   font-size: 0.82rem;
@@ -286,7 +286,7 @@ h3 {
   width: 1.3125rem;
   height: 1.3125rem;
   place-items: center;
-  border: 1px solid currentColor;
+  border: 0.0625rem solid currentColor;
   border-radius: 50%;
   font-size: 0.72rem;
   line-height: 1;
@@ -300,7 +300,7 @@ h3 {
   position: relative;
   z-index: 50;
   top: 0;
-  border-bottom: 1px solid transparent;
+  border-bottom: 0.0625rem solid transparent;
   background: #fbf6ea;
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
@@ -349,7 +349,7 @@ h3 {
 }
 
 .nav-cta {
-  width: 20.3125rem;
+  width: 14.5rem;
   min-height: 3.625rem;
   padding: 0.9375rem 1.375rem;
   font-size: 0.9375rem;
@@ -368,7 +368,7 @@ h3 {
   justify-content: center;
   flex-direction: column;
   gap: 0.4375rem;
-  border: 1px solid var(--line);
+  border: 0.0625rem solid var(--line);
   border-radius: var(--radius);
   background: var(--paper-white);
   cursor: pointer;
@@ -452,7 +452,7 @@ h3 {
   align-items: center;
   gap: 0.5625rem;
   padding: 0.5rem 0.75rem;
-  border: 1px solid var(--line);
+  border: 0.0625rem solid var(--line);
   border-radius: 62.4375rem;
   background: #fffcf6;
   color: var(--terracotta);
@@ -489,18 +489,30 @@ h3 {
 }
 
 .hero-actions .btn-primary {
-  width: max-content;
+  width: 16.5rem;
 }
 
 .hero-actions .btn-secondary {
-  width: 11.375rem;
+  width: 16.5rem;
 }
 
 .hero-actions .btn {
   height: auto;
+  min-width: 14.5rem;
   min-height: 3.375rem;
   padding: 0.8125rem 1.125rem;
   font-size: 0.9375rem;
+}
+
+.hero-actions .hero-secondary {
+  border-color: #dfc7af;
+  background: var(--sand);
+  box-shadow: 0 0.5rem 1.25rem rgba(56, 43, 36, 0.055);
+}
+
+.hero-actions .hero-secondary:hover {
+  border-color: #d5b99d;
+  background: var(--sand-deep);
 }
 
 .hero-link {
@@ -566,7 +578,7 @@ h3 {
   align-items: center;
   gap: 0.4375rem;
   padding: 0.5625rem 0.75rem;
-  border: 1px solid var(--line);
+  border: 0.0625rem solid var(--line);
   border-radius: 0.5rem;
   background: #fffcf6;
   font-size: 0.75rem;
@@ -608,7 +620,7 @@ h3 {
   width: 33.75rem;
   margin: 0;
   padding: 0.625rem 1rem;
-  border: 1px solid var(--line);
+  border: 0.0625rem solid var(--line);
   border-radius: 0.875rem;
   background: #fffcf6;
   box-shadow: var(--shadow-soft);
@@ -687,7 +699,7 @@ h3 {
 .trust-card,
 .detail-card,
 .review-card {
-  border: 1px solid var(--line);
+  border: 0.0625rem solid var(--line);
   border-radius: var(--radius);
   background: rgba(255, 253, 249, 0.84);
 }
@@ -905,19 +917,23 @@ h3 {
   gap: 2.625rem;
   min-height: 24.875rem;
   padding: 1.75rem;
-  border: 1px solid var(--line);
+  border: 0.0625rem solid var(--line);
   border-radius: var(--radius-lg);
   background: rgba(255, 253, 249, 0.9);
   box-shadow: var(--shadow-soft);
 }
 
-.about-image {
+.about-media {
   width: 26.875rem;
+}
+
+.about-image {
+  width: 100%;
   height: 21.375rem;
   min-height: 21.375rem;
   padding: 0.9375rem;
   overflow: hidden;
-  border: 1px solid var(--line);
+  border: 0.0625rem solid var(--line);
   border-radius: var(--radius);
   background: var(--paper);
 }
@@ -927,6 +943,50 @@ h3 {
   height: 100%;
   object-fit: cover;
   border-radius: 0.75rem;
+}
+
+.experience-path {
+  display: grid;
+  gap: 0.75rem;
+  padding: 0;
+  margin: 1.125rem 0 0;
+  list-style: none;
+}
+
+.experience-path li {
+  display: grid;
+  grid-template-columns: 1.875rem minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.experience-path li > span {
+  display: grid;
+  width: 1.875rem;
+  height: 1.875rem;
+  place-items: center;
+  border: 0.0625rem solid var(--line);
+  border-radius: 50%;
+  background: var(--paper-white);
+  color: var(--terracotta);
+  font-size: 0.6875rem;
+  font-weight: 700;
+}
+
+.experience-path strong,
+.experience-path small {
+  display: block;
+}
+
+.experience-path strong {
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
+}
+
+.experience-path small {
+  color: var(--muted);
+  font-size: 0.6875rem;
+  line-height: 1.125rem;
 }
 
 .about-copy {
@@ -957,11 +1017,11 @@ h3 {
   margin-top: 0.75rem;
 }
 
-.about-copy .about-bio {
+.about-copy .experience-lead {
   color: var(--ink) !important;
-  font-size: 1rem !important;
+  font-size: 0.9375rem !important;
   font-weight: 500;
-  line-height: 1.6875rem !important;
+  line-height: 1.5625rem !important;
 }
 
 .identity-list {
@@ -979,7 +1039,7 @@ h3 {
   align-items: center;
   gap: 0.5rem;
   padding: 0.5625rem 0.875rem;
-  border: 1px solid var(--line);
+  border: 0.0625rem solid var(--line);
   border-radius: 62.4375rem;
   background: var(--paper-white);
   font-size: 0.8125rem;
@@ -1094,7 +1154,7 @@ h3 {
 
 .reviews {
   height: auto;
-  min-height: 31.25rem;
+  min-height: 48rem;
   padding: 4.5rem 0 3.125rem;
   background: var(--paper-white);
 }
@@ -1142,7 +1202,7 @@ h3 {
   justify-content: flex-start;
   gap: 0.875rem;
   padding: 0.5rem 0.875rem;
-  border: 1px solid var(--line);
+  border: 0.0625rem solid var(--line);
   border-radius: 62.4375rem;
   color: var(--muted);
   font-size: 0.75rem;
@@ -1156,18 +1216,56 @@ h3 {
 
 .review-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.375rem;
-  min-height: 12.375rem;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-auto-flow: dense;
+  grid-auto-rows: minmax(9.5rem, auto);
+  gap: 1rem;
+  min-height: 0;
 }
 
 .review-card {
   display: flex;
-  width: 24.875rem;
-  min-height: 0;
+  width: auto;
+  min-height: 9.5rem;
   flex-direction: column;
   padding: 1.25rem 1.375rem;
   border-radius: 0.75rem;
+}
+
+.review-card:nth-child(1) {
+  grid-column: span 6;
+  grid-row: span 2;
+}
+
+.review-card:nth-child(n + 2):nth-child(-n + 5) {
+  grid-column: span 3;
+}
+
+.review-card:nth-child(n + 6) {
+  grid-column: span 4;
+}
+
+.review-featured {
+  justify-content: flex-end;
+  padding: 2rem;
+  background: var(--sand);
+}
+
+.review-label {
+  width: max-content;
+  margin-bottom: auto;
+  color: var(--terracotta-deep);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.review-featured p {
+  max-width: 34rem;
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 600;
+  line-height: 1.75rem;
 }
 
 .stars {
@@ -1234,7 +1332,7 @@ h3 {
   height: auto;
   min-height: 0;
   overflow: hidden;
-  border: 1px solid var(--line);
+  border: 0.0625rem solid var(--line);
   border-radius: var(--radius);
   background: rgba(255, 253, 249, 0.94);
 }
@@ -1260,7 +1358,7 @@ h3 {
   height: 2rem;
   flex: 0 0 2rem;
   place-items: center;
-  border: 1px solid var(--line);
+  border: 0.0625rem solid var(--line);
   border-radius: 50%;
   color: var(--terracotta);
   font-size: 1.25rem;
@@ -1303,7 +1401,7 @@ h3 {
   gap: 1.5rem;
   margin: 2.75rem auto 0;
   padding: 1.875rem;
-  border: 1px solid var(--line);
+  border: 0.0625rem solid var(--line);
   border-radius: var(--radius);
   background: rgba(255, 253, 249, 0.96);
   box-shadow: var(--shadow-soft);
@@ -1356,7 +1454,7 @@ h3 {
     display: grid;
     gap: 0.1875rem;
     padding: 0.875rem;
-    border: 1px solid var(--line);
+    border: 0.0625rem solid var(--line);
     border-radius: var(--radius);
     background: rgba(255, 251, 245, 0.98);
     box-shadow: var(--shadow);
@@ -1478,6 +1576,10 @@ h3 {
     min-height: 23.75rem;
   }
 
+  .about-media {
+    width: 100%;
+  }
+
   .about-copy {
     width: auto;
     padding: 0.25rem;
@@ -1504,11 +1606,20 @@ h3 {
 
   .review-grid {
     height: auto;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: auto;
   }
 
   .review-card {
     width: auto;
+    min-height: 12rem;
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+
+  .review-featured {
+    grid-column: 1 / -1 !important;
+    min-height: 20rem;
   }
 
   .faq-list {
@@ -1571,10 +1682,10 @@ h3 {
     min-height: 2.25rem;
     margin: 0;
     padding: 0.5625rem 0.75rem;
-    border: 1px solid var(--line);
-    background: var(--paper-white);
-    box-shadow: none;
-    color: var(--ink);
+    border: 0.0625rem solid var(--terracotta);
+    background: var(--terracotta);
+    box-shadow: 0 0.375rem 1rem rgba(201, 103, 58, 0.14);
+    color: #fffaf4;
     font-size: 0.7rem;
   }
 
@@ -1599,8 +1710,8 @@ h3 {
 
   h1 {
     max-width: 100%;
-    font-size: clamp(2.65rem, 12.4vw, 3.25rem);
-    line-height: 0.98;
+    font-size: clamp(2.35rem, 10.7vw, 2.8rem);
+    line-height: 1.02;
   }
 
   h2 {
@@ -1632,7 +1743,7 @@ h3 {
     align-items: center;
     gap: 0.5rem;
     padding: 0.3125rem 0.6875rem;
-    border: 1px solid var(--line);
+    border: 0.0625rem solid var(--line);
     border-radius: 62.4375rem;
     background: var(--paper-white);
     color: var(--terracotta);
@@ -1651,8 +1762,8 @@ h3 {
   .hero-title {
     max-width: none;
     margin-bottom: 1.125rem;
-    font-size: clamp(2.65rem, 12.4vw, 3.15rem);
-    line-height: 0.98;
+    font-size: clamp(2.35rem, 10.7vw, 2.8rem);
+    line-height: 1.02;
   }
 
   .rate-notes {
@@ -1685,23 +1796,18 @@ h3 {
   }
 
   .hero-actions {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
   }
 
   .hero-actions .btn-secondary {
-    display: none;
+    display: inline-flex;
   }
 
   .hero-actions .btn,
   .final-card .btn {
     width: 100%;
-  }
-
-  .hero-link {
-    justify-content: center;
-    padding: 0.5rem 0;
   }
 
   .hero-assurances {
@@ -1798,6 +1904,10 @@ h3 {
     min-height: 16.25rem;
   }
 
+  .experience-path {
+    display: none;
+  }
+
   .about-story {
     gap: 1.5rem;
     padding: 0;
@@ -1812,13 +1922,9 @@ h3 {
 
   .about-copy {
     padding: 1.25rem;
-    border: 1px solid var(--line);
+    border: 0.0625rem solid var(--line);
     border-radius: var(--radius);
     background: rgba(255, 253, 249, 0.92);
-  }
-
-  .about-bio {
-    display: none;
   }
 
   .identity-list {
@@ -1843,7 +1949,7 @@ h3 {
     align-items: center;
     gap: 0.5625rem;
     padding: 0.4375rem 0.75rem;
-    border: 1px solid var(--line);
+    border: 0.0625rem solid var(--line);
     border-radius: 62.4375rem;
     background: rgba(255, 253, 249, 0.86);
     font-size: 0.68rem;
@@ -1883,6 +1989,29 @@ h3 {
 
   .rating-row span:nth-child(n + 4) {
     display: none;
+  }
+
+  .review-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .review-card,
+  .review-featured {
+    min-height: 0;
+    padding: 1.5rem;
+  }
+
+  .review-featured {
+    grid-column: auto !important;
+  }
+
+  .review-featured p {
+    font-size: 1.125rem;
+    line-height: 1.55;
+  }
+
+  .review-label {
+    margin-bottom: 1.5rem;
   }
 
   .faq {

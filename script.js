@@ -60,7 +60,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     item.classList.add("is-open");
     header?.setAttribute("aria-expanded", "true");
-    if (content) content.style.maxHeight = `${content.scrollHeight}px`;
+    if (content) {
+      const rootFontSize = Number.parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+      content.style.maxHeight = `${content.scrollHeight / rootFontSize}rem`;
+    }
   };
 
   accordionHeaders.forEach((header) => {

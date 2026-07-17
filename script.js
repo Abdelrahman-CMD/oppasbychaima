@@ -2,6 +2,8 @@
  * Chaima Oppas - Lightweight UI Animation Engine
  * Standard Vanilla JS / Native Web APIs
  */
+document.documentElement.classList.add("js");
+
 document.addEventListener("DOMContentLoaded", () => {
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -119,6 +121,48 @@ document.addEventListener("DOMContentLoaded", () => {
     if (languageSwitcher?.hasAttribute("open") && !languageSwitcher.contains(event.target)) {
       languageSwitcher.removeAttribute("open");
     }
+  });
+
+  // Mobile keeps the career story available without making the first read feel like a CV.
+  const aboutMediaQuery = window.matchMedia("(max-width: 40rem)");
+  const aboutToggles = document.querySelectorAll(".about-toggle");
+
+  const syncAboutDisclosure = () => {
+    aboutToggles.forEach((button) => {
+      const target = document.getElementById(button.getAttribute("aria-controls"));
+      if (!target) return;
+
+      const isExpanded = button.getAttribute("aria-expanded") === "true";
+      target.hidden = aboutMediaQuery.matches ? !isExpanded : false;
+    });
+  };
+
+  aboutToggles.forEach((button) => {
+    button.addEventListener("click", () => {
+      const target = document.getElementById(button.getAttribute("aria-controls"));
+      if (!target) return;
+
+      const willExpand = button.getAttribute("aria-expanded") !== "true";
+      button.setAttribute("aria-expanded", String(willExpand));
+      button.textContent = willExpand ? button.dataset.lessLabel : button.dataset.moreLabel;
+      target.hidden = !willExpand;
+    });
+  });
+
+  syncAboutDisclosure();
+  aboutMediaQuery.addEventListener?.("change", syncAboutDisclosure);
+
+  // Mobile shows three representative stories first and keeps the full proof one tap away.
+  document.querySelectorAll(".reviews-toggle").forEach((button) => {
+    button.addEventListener("click", () => {
+      const grid = document.getElementById(button.getAttribute("aria-controls"));
+      if (!grid) return;
+
+      const willExpand = button.getAttribute("aria-expanded") !== "true";
+      button.setAttribute("aria-expanded", String(willExpand));
+      button.textContent = willExpand ? button.dataset.lessLabel : button.dataset.moreLabel;
+      grid.classList.toggle("is-expanded", willExpand);
+    });
   });
 
   // ==========================================================================

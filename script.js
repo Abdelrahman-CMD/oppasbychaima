@@ -174,22 +174,22 @@ document.addEventListener("DOMContentLoaded", () => {
     nl: {
       kennismaking: [
         "Hi Chaima, ik wil graag kennismaken voor oppas aan huis.", "", "Mijn naam:", "Plaats:",
-        "Aantal kinderen + leeftijden:", "Wanneer heb ik ongeveer oppas nodig:",
+        "Huisdieren in huis: ja/nee, welke:", "Aantal kinderen + leeftijden:", "Wanneer heb ik ongeveer oppas nodig:",
         "Ik hoor graag wanneer je beschikbaar bent.", "", "Bedankt!"
       ],
       afspraak: [
         "Hi Chaima, ik wil graag oppas op afspraak aanvragen.", "", "Datum:", "Tijd van - tot:",
-        "Plaats:", "Aantal kinderen + leeftijden:", "Slaapritme / eten / bijzonderheden:",
+        "Plaats:", "Huisdieren in huis: ja/nee, welke:", "Aantal kinderen + leeftijden:", "Slaapritme / eten / bijzonderheden:",
         "Wil ik eerst kennismaken: ja/nee", "", "Bedankt!"
       ],
       lastminute: [
         "Hi Chaima, ik zoek last-minute oppas en wil graag checken of je beschikbaar bent.", "",
-        "Datum:", "Tijd van - tot:", "Plaats:", "Aantal kinderen + leeftijden:",
+        "Datum:", "Tijd van - tot:", "Plaats:", "Huisdieren in huis: ja/nee, welke:", "Aantal kinderen + leeftijden:",
         "Wat is belangrijk om direct te weten:", "", "Bedankt!"
       ],
       kindprofiel: [
         "Hi Chaima, hierbij alvast het kindprofiel voor de oppasafspraak.", "", "Naam kind(eren):",
-        "Leeftijd(en):", "Slaapritme:", "Eten / drinken:", "Allergieën:",
+        "Leeftijd(en):", "Huisdieren in huis: ja/nee, welke:", "Slaapritme:", "Eten / drinken:", "Allergieën:",
         "Schermtijd / afspraken thuis:", "Troosten helpt met:", "Noodcontact:",
         "Overige bijzonderheden:", "", "Bedankt!"
       ]
@@ -197,45 +197,45 @@ document.addEventListener("DOMContentLoaded", () => {
     en: {
       kennismaking: [
         "Hi Chaima, I would like to arrange an introduction for babysitting at home.", "", "My name:",
-        "Location:", "Number of children + ages:", "When I may need a babysitter:",
+        "Location:", "Pets at home: yes/no, which:", "Number of children + ages:", "When I may need a babysitter:",
         "Please let me know when you are available.", "", "Thank you!"
       ],
       afspraak: [
         "Hi Chaima, I would like to request babysitting by appointment.", "", "Date:", "Time from - to:",
-        "Location:", "Number of children + ages:", "Sleep / meals / anything important:",
+        "Location:", "Pets at home: yes/no, which:", "Number of children + ages:", "Sleep / meals / anything important:",
         "Would I like an introduction first: yes/no", "", "Thank you!"
       ],
       lastminute: [
         "Hi Chaima, I need a last-minute babysitter and would like to check your availability.", "",
-        "Date:", "Time from - to:", "Location:", "Number of children + ages:",
+        "Date:", "Time from - to:", "Location:", "Pets at home: yes/no, which:", "Number of children + ages:",
         "Important information:", "", "Thank you!"
       ],
       kindprofiel: [
         "Hi Chaima, here is the child profile for our babysitting appointment.", "", "Child name(s):",
-        "Age(s):", "Sleep routine:", "Food / drinks:", "Allergies:", "Screen time / home rules:",
+        "Age(s):", "Pets at home: yes/no, which:", "Sleep routine:", "Food / drinks:", "Allergies:", "Screen time / home rules:",
         "What helps when comforting:", "Emergency contact:", "Anything else:", "", "Thank you!"
       ]
     },
     fr: {
       kennismaking: [
         "Bonjour Chaima, j’aimerais organiser une première rencontre pour une garde d’enfants à domicile.",
-        "", "Mon nom :", "Ville :", "Nombre d’enfants + âges :", "Période de garde souhaitée :",
+        "", "Mon nom :", "Ville :", "Animaux à la maison : oui/non, lesquels :", "Nombre d’enfants + âges :", "Période de garde souhaitée :",
         "Pouvez-vous me dire quand vous êtes disponible ?", "", "Merci !"
       ],
       afspraak: [
         "Bonjour Chaima, j’aimerais réserver une garde d’enfants sur rendez-vous.", "", "Date :",
-        "Horaire de - à :", "Ville :", "Nombre d’enfants + âges :",
+        "Horaire de - à :", "Ville :", "Animaux à la maison : oui/non, lesquels :", "Nombre d’enfants + âges :",
         "Sommeil / repas / informations importantes :", "Souhaitons-nous une rencontre d’abord : oui/non",
         "", "Merci !"
       ],
       lastminute: [
         "Bonjour Chaima, je cherche une garde de dernière minute et j’aimerais connaître vos disponibilités.",
-        "", "Date :", "Horaire de - à :", "Ville :", "Nombre d’enfants + âges :",
+        "", "Date :", "Horaire de - à :", "Ville :", "Animaux à la maison : oui/non, lesquels :", "Nombre d’enfants + âges :",
         "Informations importantes :", "", "Merci !"
       ],
       kindprofiel: [
         "Bonjour Chaima, voici le profil de notre enfant pour la garde.", "", "Nom de l’enfant / des enfants :",
-        "Âge(s) :", "Rythme de sommeil :", "Repas / boissons :", "Allergies :",
+        "Âge(s) :", "Animaux à la maison : oui/non, lesquels :", "Rythme de sommeil :", "Repas / boissons :", "Allergies :",
         "Écrans / règles à la maison :", "Ce qui aide à le/la rassurer :", "Contact d’urgence :",
         "Autres informations :", "", "Merci !"
       ]

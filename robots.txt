@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://abdelrahman-cmd.github.io/oppasbychaima/sitemap.xml
+Sitemap: https://oppasbychaima.nl/sitemap.xml

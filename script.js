@@ -93,6 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const header = document.querySelector("[data-header]");
   const navToggle = document.querySelector("[data-nav-toggle]");
   const navMenu = document.querySelector("[data-nav-menu]");
+  const mobileNavMediaQuery = window.matchMedia("(max-width: 40rem)");
 
   const syncHeader = () => {
     header?.classList.toggle("is-scrolled", window.scrollY > 12);
@@ -107,12 +108,24 @@ document.addEventListener("DOMContentLoaded", () => {
     navMenu?.classList.toggle("is-open", !isOpen);
   });
 
+  const closeNavigation = () => {
+    navToggle?.setAttribute("aria-expanded", "false");
+    navMenu?.classList.remove("is-open");
+  };
+
   navMenu?.addEventListener("click", (event) => {
     const link = event.target.closest("a");
     if (!link) return;
 
-    navToggle?.setAttribute("aria-expanded", "false");
-    navMenu.classList.remove("is-open");
+    closeNavigation();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeNavigation();
+  });
+
+  mobileNavMediaQuery.addEventListener?.("change", (event) => {
+    if (!event.matches) closeNavigation();
   });
 
   const languageSwitcher = document.querySelector(".language-switcher");
@@ -123,8 +136,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Mobile keeps the career story available without making the first read feel like a CV.
-  const aboutMediaQuery = window.matchMedia("(max-width: 40rem)");
+  // Tablet and mobile keep the career story available without making the first read feel like a CV.
+  const aboutMediaQuery = window.matchMedia("(max-width: 65rem)");
   const aboutToggles = document.querySelectorAll(".about-toggle");
 
   const syncAboutDisclosure = () => {

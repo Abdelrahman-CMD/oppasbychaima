@@ -146,8 +146,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     directionDistance += Math.abs(delta);
 
-    if (nextDirection === "down" && nextScrollY > (header?.offsetHeight || 0) + 32 && directionDistance >= 48) {
-      queueHeaderState(true, 150);
+    if (nextDirection === "down" && nextScrollY > (header?.offsetHeight || 0) + 32 && directionDistance >= 64) {
+      queueHeaderState(true, 220);
       directionDistance = 0;
     } else if (nextDirection === "up" && directionDistance >= 14) {
       queueHeaderState(false, 45);

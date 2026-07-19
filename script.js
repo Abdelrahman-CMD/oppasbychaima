@@ -93,19 +93,86 @@ document.addEventListener("DOMContentLoaded", () => {
   const header = document.querySelector("[data-header]");
   const navToggle = document.querySelector("[data-nav-toggle]");
   const navMenu = document.querySelector("[data-nav-menu]");
+  const languageSwitchers = document.querySelectorAll(".language-switcher");
   const mobileNavMediaQuery = window.matchMedia("(max-width: 40rem)");
+  let lastScrollY = Math.max(window.scrollY, 0);
+  let scrollDirection = null;
+  let directionDistance = 0;
+  let headerStateTimer = null;
+  let headerFrameRequested = false;
+
+  const isHeaderPinned = () => (
+    navToggle?.getAttribute("aria-expanded") === "true"
+    || Array.from(languageSwitchers).some((switcher) => switcher.hasAttribute("open"))
+  );
+
+  const setHeaderHidden = (hidden) => {
+    const shouldHide = hidden && !prefersReducedMotion && !isHeaderPinned();
+    header?.classList.toggle("is-hidden", shouldHide);
+  };
+
+  const keepHeaderVisible = () => {
+    window.clearTimeout(headerStateTimer);
+    setHeaderHidden(false);
+  };
+
+  const queueHeaderState = (hidden, delay) => {
+    window.clearTimeout(headerStateTimer);
+    headerStateTimer = window.setTimeout(() => setHeaderHidden(hidden), delay);
+  };
 
   const syncHeader = () => {
-    header?.classList.toggle("is-scrolled", window.scrollY > 12);
+    const nextScrollY = Math.max(window.scrollY, 0);
+    const delta = nextScrollY - lastScrollY;
+
+    header?.classList.toggle("is-scrolled", nextScrollY > 12);
+
+    if (prefersReducedMotion || nextScrollY <= 24) {
+      keepHeaderVisible();
+      scrollDirection = null;
+      directionDistance = 0;
+      lastScrollY = nextScrollY;
+      return;
+    }
+
+    if (Math.abs(delta) < 2) return;
+
+    const nextDirection = delta > 0 ? "down" : "up";
+    if (nextDirection !== scrollDirection) {
+      scrollDirection = nextDirection;
+      directionDistance = 0;
+      window.clearTimeout(headerStateTimer);
+    }
+
+    directionDistance += Math.abs(delta);
+
+    if (nextDirection === "down" && nextScrollY > (header?.offsetHeight || 0) + 32 && directionDistance >= 48) {
+      queueHeaderState(true, 150);
+      directionDistance = 0;
+    } else if (nextDirection === "up" && directionDistance >= 14) {
+      queueHeaderState(false, 45);
+      directionDistance = 0;
+    }
+
+    lastScrollY = nextScrollY;
   };
 
   syncHeader();
-  window.addEventListener("scroll", syncHeader, { passive: true });
+  window.addEventListener("scroll", () => {
+    if (headerFrameRequested) return;
+
+    headerFrameRequested = true;
+    window.requestAnimationFrame(() => {
+      syncHeader();
+      headerFrameRequested = false;
+    });
+  }, { passive: true });
 
   navToggle?.addEventListener("click", () => {
     const isOpen = navToggle.getAttribute("aria-expanded") === "true";
     navToggle.setAttribute("aria-expanded", String(!isOpen));
     navMenu?.classList.toggle("is-open", !isOpen);
+    keepHeaderVisible();
   });
 
   const closeNavigation = () => {
@@ -128,12 +195,23 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!event.matches) closeNavigation();
   });
 
-  const languageSwitcher = document.querySelector(".language-switcher");
+  languageSwitchers.forEach((switcher) => {
+    switcher.addEventListener("toggle", () => {
+      if (!switcher.hasAttribute("open")) return;
+
+      languageSwitchers.forEach((otherSwitcher) => {
+        if (otherSwitcher !== switcher) otherSwitcher.removeAttribute("open");
+      });
+      keepHeaderVisible();
+    });
+  });
 
   document.addEventListener("click", (event) => {
-    if (languageSwitcher?.hasAttribute("open") && !languageSwitcher.contains(event.target)) {
-      languageSwitcher.removeAttribute("open");
-    }
+    languageSwitchers.forEach((switcher) => {
+      if (switcher.hasAttribute("open") && !switcher.contains(event.target)) {
+        switcher.removeAttribute("open");
+      }
+    });
   });
 
   // Tablet and mobile keep the career story available without making the first read feel like a CV.

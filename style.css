@@ -1697,7 +1697,10 @@ small {
   display: flex;
   min-height: 4.5rem;
   align-items: center;
+  flex-direction: column;
+  gap: 0.35rem;
   justify-content: center;
+  padding-block: 1.125rem;
 }
 
 .site-footer small {
@@ -1706,6 +1709,26 @@ small {
   font-weight: 600;
   line-height: 1.5;
   text-align: center;
+}
+
+.site-credit {
+  color: color-mix(in srgb, var(--muted) 84%, var(--clay));
+  font-size: 0.6875rem;
+  font-weight: 700;
+}
+
+.site-credit a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: rgba(167, 124, 86, 0.42);
+  text-underline-offset: 0.18em;
+  transition: color 180ms ease, text-decoration-color 180ms ease;
+}
+
+.site-credit a:hover,
+.site-credit a:focus-visible {
+  color: var(--clay);
+  text-decoration-color: currentColor;
 }
 
 .faq-shape {

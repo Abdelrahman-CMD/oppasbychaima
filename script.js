@@ -264,7 +264,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const whatsappMessagesByLocale = {
     nl: {
       kennismaking: [
-        "Hi Chaima, ik wil graag kennismaken voor oppas aan huis.", "", "Mijn naam:", "Plaats:",
+        "Hoi Chaima, ik wil graag informeren naar oppas.", "", "Mijn naam:", "Plaats:",
         "Huisdieren in huis: ja/nee, welke:", "Aantal kinderen + leeftijden:", "Wanneer heb ik ongeveer oppas nodig:",
         "Ik hoor graag wanneer je beschikbaar bent.", "", "Bedankt!"
       ],
@@ -287,7 +287,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     en: {
       kennismaking: [
-        "Hi Chaima, I would like to arrange an introduction for babysitting at home.", "", "My name:",
+        "Hi Chaima, I would like to ask about babysitting.", "", "My name:",
         "Location:", "Pets at home: yes/no, which:", "Number of children + ages:", "When I may need a babysitter:",
         "Please let me know when you are available.", "", "Thank you!"
       ],
@@ -309,7 +309,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     fr: {
       kennismaking: [
-        "Bonjour Chaima, j’aimerais organiser une première rencontre pour une garde d’enfants à domicile.",
+        "Bonjour Chaima, je souhaite me renseigner sur une garde d’enfants.",
         "", "Mon nom :", "Ville :", "Animaux à la maison : oui/non, lesquels :", "Nombre d’enfants + âges :", "Période de garde souhaitée :",
         "Pouvez-vous me dire quand vous êtes disponible ?", "", "Merci !"
       ],
@@ -333,6 +333,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
   const whatsappMessages = whatsappMessagesByLocale[locale] || whatsappMessagesByLocale.nl;
+
+  document.querySelectorAll("[data-service]").forEach((link) => {
+    const service = link.getAttribute("data-service").replace(/[?.!]$/, "");
+    const templates = {
+      nl: [`Hoi Chaima, ik wil graag informeren naar: ${service}.`, "", "Datum:", "Tijd van - tot:", "Plaats:", "Aantal kinderen en leeftijden:", "", "Is dit mogelijk?"],
+      en: [`Hi Chaima, I would like to ask about: ${service}.`, "", "Date:", "Time from - to:", "Location:", "Number of children and ages:", "", "Would this be possible?"],
+      fr: [`Bonjour Chaima, je souhaite me renseigner sur : ${service}.`, "", "Date :", "Horaire de - à :", "Ville :", "Nombre d’enfants et âges :", "", "Est-ce possible ?"]
+    };
+    link.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent((templates[locale] || templates.nl).join("\n"))}`;
+    link.target = "_blank";
+    link.rel = "noopener";
+  });
 
   document.querySelectorAll("[data-whatsapp]").forEach((link) => {
     const type = link.getAttribute("data-whatsapp");

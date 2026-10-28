@@ -2777,3 +2777,36 @@ html[lang="ar"] .btn { line-height: 1.7; }
   html[lang="ar"] .hero-title .no-wrap { white-space: normal; }
   html[lang="ar"] .faq .section-heading h2 { line-height: 1.5; }
 }
+
+/* Equal spacing around trust icons in both reading directions. */
+.trust .trust-card,
+.about-proof .trust-card {
+  display: grid;
+  grid-template-columns: 1.875rem minmax(0, 1fr);
+  column-gap: .875rem;
+  row-gap: .875rem;
+  align-content: start;
+  align-items: center;
+}
+.trust .trust-card > .icon-chip,
+.about-proof .trust-card > .icon-chip { grid-column: 1; grid-row: 1; }
+.trust .trust-card > h3,
+.about-proof .trust-card > h3 { display: block; grid-column: 2; grid-row: 1; margin: 0; }
+.trust .trust-card > p,
+.about-proof .trust-card > p { grid-column: 1 / -1; margin: 0; }
+
+/* Language choices always read left-to-right as a consistently aligned list. */
+.language-options a,
+html[lang="ar"] .language-options a {
+  direction: ltr;
+  text-align: left;
+  column-gap: .625rem;
+  min-height: 2.75rem;
+}
+.language-options a > span:last-child { text-align: left; }
+@media (max-width: 40rem) {
+  .language-options,
+  html[lang="ar"] .language-options { text-align: left; }
+  .trust .trust-card,
+  .about-proof .trust-card { column-gap: .875rem; row-gap: .875rem; padding: 1.375rem; }
+}

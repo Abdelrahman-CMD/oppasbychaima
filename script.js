@@ -332,11 +332,18 @@ document.addEventListener("DOMContentLoaded", () => {
       ]
     }
   };
+  whatsappMessagesByLocale.ar = {
+    kennismaking: ["مرحبًا شيماء، أود الاستفسار عن رعاية الأطفال والتعارف معك.", "", "اسمي:", "المدينة أو الحي:", "هل توجد حيوانات أليفة في المنزل؟", "عدد الأطفال وأعمارهم:", "الموعد التقريبي الذي أحتاج فيه إلى الرعاية:", "", "هل أنت متاحة؟ شكرًا لك!"],
+    afspraak: ["مرحبًا شيماء، أود الاستفسار عن رعاية الأطفال بموعد مسبق.", "", "التاريخ:", "الوقت من — إلى:", "المدينة أو الحي:", "عدد الأطفال وأعمارهم:", "", "هل يمكننا الاتفاق على التفاصيل؟"],
+    lastminute: ["مرحبًا شيماء، أحتاج إلى رعاية للأطفال في وقت قريب، وأود معرفة إن كنت متاحة.", "", "التاريخ:", "الوقت من — إلى:", "المدينة أو الحي:", "عدد الأطفال وأعمارهم:", "", "شكرًا لك!"],
+    kindprofiel: ["مرحبًا شيماء، هذه بعض التفاصيل المتعلقة بموعد رعاية الأطفال.", "", "أسماء الأطفال:", "الأعمار:", "روتين النوم:", "الطعام والشراب:", "قواعد البيت:", "ما يساعد الطفل على الهدوء:", "جهة الاتصال عند الضرورة:", "", "شكرًا لك!"]
+  };
   const whatsappMessages = whatsappMessagesByLocale[locale] || whatsappMessagesByLocale.nl;
 
   document.querySelectorAll("[data-service]").forEach((link) => {
     const service = link.getAttribute("data-service").replace(/[?.!]$/, "");
     const templates = {
+      ar: [`مرحبًا شيماء، أود الاستفسار عن: ${service}.`, "", "التاريخ (أو بالتنسيق معك):", "الوقت من — إلى:", "المدينة أو الحي:", "عدد الأطفال وأعمارهم:", "", "هل أنت متاحة؟"],
       nl: [`Hoi Chaima, ik wil graag informeren naar: ${service}.`, "", "Datum:", "Tijd van - tot:", "Plaats:", "Aantal kinderen en leeftijden:", "", "Is dit mogelijk?"],
       en: [`Hi Chaima, I would like to ask about: ${service}.`, "", "Date:", "Time from - to:", "Location:", "Number of children and ages:", "", "Would this be possible?"],
       fr: [`Bonjour Chaima, je souhaite me renseigner sur : ${service}.`, "", "Date :", "Horaire de - à :", "Ville :", "Nombre d’enfants et âges :", "", "Est-ce possible ?"]

@@ -2747,3 +2747,33 @@ small {
 /* Section spacing is explicit: the shared .section class only sets positioning. */
 .services-overview { padding-block: clamp(3rem, 6vw, 5rem); }
 .service-hero { padding-top: clamp(2.5rem, 5vw, 4rem); }
+
+/* Arabic: preserve the brand palette and hierarchy with native Arabic type. */
+html[lang="ar"] { --font-body: "Noto Sans Arabic", Tahoma, sans-serif; --font-display: "Amiri", Georgia, serif; }
+html[lang="ar"] body { line-height: 1.9; }
+html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3 { letter-spacing: 0; }
+html[lang="ar"] .hero-title { font-size: clamp(2.7rem,4.2vw,3.7rem); line-height: 1.4; }
+html[lang="ar"] .hero-lead { line-height: 2; }
+html[lang="ar"] .service-hero h1 { line-height: 1.4; }
+html[lang="ar"] .text-accent, html[lang="ar"] .highlight-word { font-style: normal; }
+html[lang="ar"] .service-eyebrow, html[lang="ar"] .eyebrow, html[lang="ar"] .review-label { letter-spacing: 0; }
+html[lang="ar"] .nav-menu { margin-left: 0; margin-right: auto; }
+html[lang="ar"] .brand { direction: ltr; }
+html[lang="ar"] .language-options { right: auto; left: 0; text-align: start; }
+html[lang="ar"] .language-options a { direction: ltr; }
+html[lang="ar"] .faq-header { text-align: right; }
+html[lang="ar"] .about-copy { text-align: right; }
+html[lang="ar"] .price-row dd { direction: rtl; unicode-bidi: isolate; }
+html[lang="ar"] .price-row dd span { margin-left: 0; margin-right: .35rem; }
+html[lang="ar"] .hero-visual figcaption { left: auto; right: 6.5rem; }
+html[lang="ar"] .handwritten { font-family: var(--font-body); }
+html[lang="ar"] .site-credit a { direction: ltr; unicode-bidi: isolate; display: inline-block; }
+html[lang="ar"] .rate-notes span { white-space: normal; text-align: start; }
+html[lang="ar"] .btn { line-height: 1.7; }
+@media (max-width: 40rem) {
+  html[lang="ar"] .hero-title { font-size: clamp(2rem,8.5vw,2.7rem); line-height: 1.4; }
+  html[lang="ar"] .nav-menu { margin-right: 0; }
+  html[lang="ar"] .hero-visual figcaption { right: auto; }
+  html[lang="ar"] .hero-title .no-wrap { white-space: normal; }
+  html[lang="ar"] .faq .section-heading h2 { line-height: 1.5; }
+}

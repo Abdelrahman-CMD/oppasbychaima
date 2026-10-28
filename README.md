@@ -40,3 +40,7 @@ De illustratie voor diensten is `assets/hero-diensten.webp` (864 × 654, transpa
 ## Lokale review
 
 Start `python3 -m http.server 8766` vanuit de projectmap. Publiceren via een push naar `main` activeert GitHub Pages; doe dit pas na expliciet akkoord op de review.
+
+## Arabisch
+
+Arabische routes: `/ar/` en `/ar/services/`. Beide gebruiken `lang="ar"` en `dir="rtl"`. Arabische UI-tekst, reviews, voorwaarden en WhatsApp-berichten zijn gelokaliseerd; gedeelde CSS bevat taalgebonden RTL-regels. Amiri en Noto Sans Arabic verzorgen de Arabische typografie. Houd bij toekomstige wijzigingen inhoud, prijzen en voorwaarden in alle vier talen gelijk en controleer de richting op mobiel.

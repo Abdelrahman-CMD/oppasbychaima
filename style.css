@@ -2815,3 +2815,8 @@ html[lang="ar"] .language-options a {
   .trust .trust-card,
   .about-proof .trust-card { column-gap: .875rem; row-gap: .875rem; padding: 1.375rem; }
 }
+
+/* Hero: price information follows the introduction and actions. */
+.hero-rate-link { margin: 1rem 0 0; font-size: .875rem; line-height: 1.6; color: var(--muted); }
+.hero-rate-link a { color: inherit; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: .25em; }
+.hero-rate-link a:hover { color: var(--terra-deep); text-decoration-color: currentColor; }

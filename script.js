@@ -243,7 +243,7 @@ document.addEventListener("DOMContentLoaded", () => {
   syncAboutDisclosure();
   aboutMediaQuery.addEventListener?.("change", syncAboutDisclosure);
 
-  // Mobile shows three representative stories first and keeps the full proof one tap away.
+  // Show three detailed parent experiences first on all screen sizes and keeps the full proof one tap away.
   document.querySelectorAll(".reviews-toggle").forEach((button) => {
     button.addEventListener("click", () => {
       const grid = document.getElementById(button.getAttribute("aria-controls"));
@@ -264,9 +264,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const whatsappMessagesByLocale = {
     nl: {
       kennismaking: [
-        "Hoi Chaima, ik wil graag informeren naar oppas.", "", "Mijn naam:", "Plaats:",
-        "Huisdieren in huis: ja/nee, welke:", "Aantal kinderen + leeftijden:", "Wanneer heb ik ongeveer oppas nodig:",
-        "Ik hoor graag wanneer je beschikbaar bent.", "", "Bedankt!"
+        "Hoi Chaima, ik wil graag informeren naar oppas.", "", "Datum:", "Tijd van - tot:",
+        "Plaats:", "Aantal kinderen + leeftijden:", "", "Ben je beschikbaar?"
       ],
       afspraak: [
         "Hi Chaima, ik wil graag oppas op afspraak aanvragen.", "", "Datum:", "Tijd van - tot:",
@@ -286,11 +285,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ]
     },
     en: {
-      kennismaking: [
-        "Hi Chaima, I would like to ask about babysitting.", "", "My name:",
-        "Location:", "Pets at home: yes/no, which:", "Number of children + ages:", "When I may need a babysitter:",
-        "Please let me know when you are available.", "", "Thank you!"
-      ],
+      kennismaking: ["Hi Chaima, I would like to ask about babysitting.", "", "Date:", "Time from - to:", "Location:", "Number of children + ages:", "", "Are you available?"],
       afspraak: [
         "Hi Chaima, I would like to request babysitting by appointment.", "", "Date:", "Time from - to:",
         "Location:", "Pets at home: yes/no, which:", "Number of children + ages:", "Sleep / meals / anything important:",
@@ -308,11 +303,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ]
     },
     fr: {
-      kennismaking: [
-        "Bonjour Chaima, je souhaite me renseigner sur une garde d’enfants.",
-        "", "Mon nom :", "Ville :", "Animaux à la maison : oui/non, lesquels :", "Nombre d’enfants + âges :", "Période de garde souhaitée :",
-        "Pouvez-vous me dire quand vous êtes disponible ?", "", "Merci !"
-      ],
+      kennismaking: ["Bonjour Chaima, je souhaite me renseigner sur une garde d’enfants.", "", "Date :", "Horaires de - à :", "Lieu :", "Nombre d’enfants + âges :", "", "Êtes-vous disponible ?"],
       afspraak: [
         "Bonjour Chaima, j’aimerais réserver une garde d’enfants sur rendez-vous.", "", "Date :",
         "Horaire de - à :", "Ville :", "Animaux à la maison : oui/non, lesquels :", "Nombre d’enfants + âges :",
@@ -333,7 +324,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
   whatsappMessagesByLocale.ar = {
-    kennismaking: ["مرحبًا شيماء، أود الاستفسار عن رعاية الأطفال والتعارف معك.", "", "اسمي:", "المدينة أو الحي:", "هل توجد حيوانات أليفة في المنزل؟", "عدد الأطفال وأعمارهم:", "الموعد التقريبي الذي أحتاج فيه إلى الرعاية:", "", "هل أنت متاحة؟ شكرًا لك!"],
+    kennismaking: ["مرحبًا شيماء، أود الاستفسار عن رعاية الأطفال.", "", "التاريخ:", "الوقت من — إلى:", "المدينة أو الحي:", "عدد الأطفال وأعمارهم:", "", "هل أنت متاحة؟"],
     afspraak: ["مرحبًا شيماء، أود الاستفسار عن رعاية الأطفال بموعد مسبق.", "", "التاريخ:", "الوقت من — إلى:", "المدينة أو الحي:", "عدد الأطفال وأعمارهم:", "", "هل يمكننا الاتفاق على التفاصيل؟"],
     lastminute: ["مرحبًا شيماء، أحتاج إلى رعاية للأطفال في وقت قريب، وأود معرفة إن كنت متاحة.", "", "التاريخ:", "الوقت من — إلى:", "المدينة أو الحي:", "عدد الأطفال وأعمارهم:", "", "شكرًا لك!"],
     kindprofiel: ["مرحبًا شيماء، هذه بعض التفاصيل المتعلقة بموعد رعاية الأطفال.", "", "أسماء الأطفال:", "الأعمار:", "روتين النوم:", "الطعام والشراب:", "قواعد البيت:", "ما يساعد الطفل على الهدوء:", "جهة الاتصال عند الضرورة:", "", "شكرًا لك!"]

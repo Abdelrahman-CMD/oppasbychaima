@@ -395,7 +395,7 @@ small {
   gap: 0.4375rem;
   padding: 0.5rem 0.6875rem;
   border: 0.0625rem solid var(--line);
-  border-radius: 62.4375rem;
+  border-radius: var(--button-radius);
   background: rgba(255, 253, 249, 0.9);
   color: var(--ink);
   cursor: pointer;

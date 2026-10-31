@@ -3140,3 +3140,18 @@ html.service-dialog-open { overflow: hidden; scrollbar-gutter: stable; }
 }
 .service-dialog .service-more-copy li:has(small) { font-weight: 600; color: var(--ink); }
 .service-dialog .service-more-copy li small { font-weight: 400; color: var(--muted); }
+
+/* Prices: labels share a top line, amounts share a baseline, unit sits at a fixed distance. */
+.services-preview .service-card-grid .service-moment:not(.service-moment-2) .price-row { justify-content: flex-start; }
+.services-preview .service-card-grid .service-moment:not(.service-moment-2) .price-row dd { margin-top: auto; }
+.services-preview .service-card-grid .price-row dt { font-weight: 600; color: var(--ink); }
+.services-preview .service-card-grid .price-row dt small { margin-top: .125rem; font-size: .75rem; font-weight: 400; color: var(--muted); }
+.services-preview .service-card-grid .price-row dd { display: inline-flex; align-items: baseline; gap: .375rem; font-variant-numeric: lining-nums proportional-nums; letter-spacing: -.02em; line-height: 1; }
+.services-preview .service-card-grid .price-row dd span { margin: 0; font-size: .8125rem; font-weight: 500; letter-spacing: 0; color: var(--muted); }
+
+/* Touch: no grey tap flash, and hover tints only where a pointer can hover. */
+button, a, summary, [role="button"] { -webkit-tap-highlight-color: transparent; }
+@media (hover: none) {
+ .faq-header:hover { background-color: transparent; }
+}
+html[lang="ar"] .services-preview .service-card-grid .price-row dd { flex-direction: column; align-items: flex-start; gap: .25rem; white-space: nowrap; }

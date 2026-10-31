@@ -53,7 +53,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     item.classList.remove("is-open");
     header?.setAttribute("aria-expanded", "false");
-    if (content) content.style.maxHeight = null;
+    if (content) {
+      content.style.maxHeight = null;
+      content.inert = true;
+      content.setAttribute("aria-hidden", "true");
+    }
   };
 
   const openFaqItem = (item) => {
@@ -63,6 +67,8 @@ document.addEventListener("DOMContentLoaded", () => {
     item.classList.add("is-open");
     header?.setAttribute("aria-expanded", "true");
     if (content) {
+      content.inert = false;
+      content.removeAttribute("aria-hidden");
       const rootFontSize = Number.parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
       content.style.maxHeight = `${content.scrollHeight / rootFontSize}rem`;
     }
@@ -81,7 +87,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  document.querySelectorAll(".faq-item.is-open").forEach(openFaqItem);
+  document.querySelectorAll(".faq-item").forEach((item) => {
+    if (item.classList.contains("is-open")) openFaqItem(item);
+    else closeFaqItem(item);
+  });
 
   window.addEventListener("resize", () => {
     document.querySelectorAll(".faq-item.is-open").forEach(openFaqItem);
@@ -102,6 +111,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let headerFrameRequested = false;
 
   const isHeaderPinned = () => (
+    header?.contains(document.activeElement)
+    ||
     navToggle?.getAttribute("aria-expanded") === "true"
     || Array.from(languageSwitchers).some((switcher) => switcher.hasAttribute("open"))
   );
@@ -187,8 +198,15 @@ document.addEventListener("DOMContentLoaded", () => {
     closeNavigation();
   });
 
+  header?.addEventListener("focusin", keepHeaderVisible);
+
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") closeNavigation();
+    if (event.key === "Escape") {
+      const returnToToggle = navToggle?.getAttribute("aria-expanded") === "true"
+        && navMenu?.contains(document.activeElement);
+      closeNavigation();
+      if (returnToToggle) navToggle.focus();
+    }
   });
 
   mobileNavMediaQuery.addEventListener?.("change", (event) => {
@@ -352,5 +370,25 @@ document.addEventListener("DOMContentLoaded", () => {
     link.setAttribute("href", `https://wa.me/${whatsappNumber}?text=${encodedMessage}`);
     link.setAttribute("target", "_blank");
     link.setAttribute("rel", "noopener");
+  });
+});
+
+// Native dialogs keep service details separate from the comparison grid.
+document.querySelectorAll("[data-service-dialog]").forEach((trigger) => {
+  const dialog = document.getElementById(trigger.dataset.serviceDialog);
+  if (!dialog) return;
+  trigger.addEventListener("click", () => {
+    dialog.showModal();
+    document.documentElement.classList.add("service-dialog-open");
+  });
+  dialog.querySelector("[data-dialog-close]").addEventListener("click", () => dialog.close());
+  dialog.addEventListener("click", (event) => {
+    if (event.target !== dialog) return;
+    const rect = dialog.getBoundingClientRect();
+    if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
+  });
+  dialog.addEventListener("close", () => {
+    document.documentElement.classList.remove("service-dialog-open");
+    trigger.focus({ preventScroll: true });
   });
 });
